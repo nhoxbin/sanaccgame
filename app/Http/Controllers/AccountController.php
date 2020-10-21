@@ -198,7 +198,7 @@ class AccountController extends Controller
             if ($user === null) {
                 $responseInfo = "SDT: ".$mobile." khong ton tai tren he thong.\n Vui long kiem tra lai.";
             } else {
-                $account = Account::find($arr[2]);
+                $account = $user->accounts->find($arr[2]);
                 if ($account === null) {
                     $responseInfo = "Tai khoan khong ton tai tren he thong, Xin vui long kiem tra lai.";
                 } else {
