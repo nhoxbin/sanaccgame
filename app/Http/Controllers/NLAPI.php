@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 class NLAPI extends Controller {
 	public $url_api = 'https://www.nganluong.vn/checkout.api.nganluong.post.php';
 
-	// public $merchant_id = '36680';
-	// public $merchant_password = 'matkhauketnoi';
-	// public $receiver_email = 'demo@nganluong.vn';
+	public $merchant_id = '36680';
+	public $merchant_password = 'matkhauketnoi';
+	public $receiver_email = 'demo@nganluong.vn';
 	
-	public $merchant_id = '47628'; // 64805
-	public $merchant_password = 'b8870c42ee4f5b972498ed8576a2bbd2'; // 6309ccc7509eb772941fb75a741bfe23
-	public $receiver_email = 'hungvippy113@gmail.com'; // binm8.4356@gmail.com
+	// public $merchant_id = '47628'; // 64805
+	// public $merchant_password = 'b8870c42ee4f5b972498ed8576a2bbd2'; // 6309ccc7509eb772941fb75a741bfe23
+	// public $receiver_email = 'hungvippy113@gmail.com'; // binm8.4356@gmail.com
 
 	// đơn vị tiền bắt buộc có
 	public $cur_code = 'vnd';

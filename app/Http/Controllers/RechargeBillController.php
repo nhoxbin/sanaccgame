@@ -185,7 +185,7 @@ class RechargeBillController extends Controller
             } else {
                 return redirect()->back()->withError('Vui lòng chọn đúng phương thức thanh toán!');
             }
-            
+
             if (isset($nl_result->error_code) && $nl_result->error_code == '00') {
                 // khi hóa đơn hợp lệ, lưu đơn hàng
                 RechargeBill::create([
@@ -196,13 +196,13 @@ class RechargeBillController extends Controller
                 ]);
 
                 // Cập nhât order với token $nl_result->token để sử dụng check hoàn thành sau này
-                $nl = NganLuong::create([
+                NganLuong::create([
                     'recharge_bill_id' => $order_code,
                     'token' => $nl_result->token
                 ]);
                 return redirect()->back()->with('checkout_url', (string) $nl_result->checkout_url);
             } else {
-                return redirect()->back()->withError($nl_result->error_message);
+                return redirect()->back()->withError((string) $nl_result->error_message);
             }
         } else {
             return redirect()->back()->withError('Bạn chưa nhập đủ thông tin bên dưới.');
