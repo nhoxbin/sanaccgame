@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Card;
-use App\NganLuong;
+use App\Nganluong;
 use App\Momo;
 use App\Sim;
 use App\RechargeBill;
@@ -174,19 +174,19 @@ class RechargeBillController extends Controller
                 $nl_result = $nlcheckout->BankCheckout($order_code, $total_amount, $bank_code, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items);
             } elseif ($payment_method == "IB_ONLINE" && $bank_code != '') {
                 $nl_result = $nlcheckout->IBCheckout($order_code, $total_amount, $bank_code, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items);
-            }elseif ($payment_method == "NH_OFFLINE" && $bank_code != '') {
+            } elseif ($payment_method == "NH_OFFLINE" && $bank_code != '') {
                 $nl_result = $nlcheckout->officeBankCheckout($order_code, $total_amount, $bank_code, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items);
             } elseif ($payment_method == "ATM_OFFLINE" && $bank_code != '') {
                 $nl_result = $nlcheckout->BankOfflineCheckout($order_code, $total_amount, $bank_code, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items);
-            }  elseif ($payment_method == "VISA") {
+            } elseif ($payment_method == "VISA") {
                 $nl_result = $nlcheckout->VisaCheckout($order_code, $total_amount, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items, $bank_code);
             } elseif ($payment_method == "CREDIT_CARD_PREPAID") {
                 $nl_result = $nlcheckout->PrepaidVisaCheckout($order_code, $total_amount, $payment_type, $order_description, $tax_amount, $fee_shipping, $discount_amount, $return_url, $cancel_url, $buyer_fullname, $buyer_email, $buyer_mobile, $buyer_address, $array_items, $bank_code);
             } else {
                 return redirect()->back()->withError('Vui lòng chọn đúng phương thức thanh toán!');
             }
-
-            if ($nl_result->error_code == '00') {
+            
+            if (isset($nl_result->error_code) && $nl_result->error_code == '00') {
                 // khi hóa đơn hợp lệ, lưu đơn hàng
                 RechargeBill::create([
                     'id' => $order_code,
