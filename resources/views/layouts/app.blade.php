@@ -8,10 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @if (@yield('title', null))
-            @yield('title', null) |
-        @endif
-        Sàn Acc Game - Sàn Mua Bán Tài Khoản Game
+        @yield('title', null) | Sàn Acc Game - Sàn Mua Bán Tài Khoản Game
     </title>
 
     <!-- Scripts -->
