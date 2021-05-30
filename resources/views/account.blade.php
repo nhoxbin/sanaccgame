@@ -1,4 +1,5 @@
-@extends('layouts.app', ['title' => 'Acc'. $account->game->sort_name . '#' . $account->id . ' | Giá: ' . number_format($account->price) . 'đ'])
+@extends('layouts.app')
+@extends('title', 'Acc'. $account->game->sort_name . '#' . $account->id . ' | Giá: ' . number_format($account->price) . 'đ')
 @section('content')
 <div class="sl-dtprod">
     <div class="container">
