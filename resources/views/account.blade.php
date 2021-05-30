@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', ['title' => 'Acc'. $account->game->sort_name . '#' . $account->id])
 @section('content')
 <div class="sl-dtprod">
     <div class="container">

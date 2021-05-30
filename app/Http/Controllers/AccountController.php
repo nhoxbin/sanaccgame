@@ -44,7 +44,7 @@ class AccountController extends Controller
                     break;
             }
         }
-        $accounts = $accounts->paginate(20);
+        $accounts = $accounts->orderBy('created_at', 'desc')->paginate(20);
 
 		$dashboard['number_user'] = User::count() + 1000;
         $dashboard['number_account_done'] = Account::where('client_status', 2)->count() + 300;
@@ -209,7 +209,7 @@ class AccountController extends Controller
         } else {
             $responseInfo = "Sai cu phap\nVui long nhap dung cu phap";
         }
-        
+
         return '0|'.$responseInfo;
     }
 }

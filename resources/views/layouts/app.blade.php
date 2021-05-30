@@ -7,7 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Sàn Acc Game - Sàn Mua Bán Tài Khoản Game</title>
+    <title>
+        @if (isset($title))
+            {{ $title }} |
+        @endif
+        Sàn Acc Game - Sàn Mua Bán Tài Khoản Game
+    </title>
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -115,7 +120,7 @@
             }
         });
     </script>
-    
+
     @stack('script')
 </body>
 </html>
