@@ -54,12 +54,12 @@ class HomeController extends Controller
                     break;
             }
         }
-        $accounts = $accounts->paginate(20);
+        $accounts = $accounts->orderBy('created_at', 'desc')->paginate(20);
 
         $dashboard['number_user'] = User::count() + 1000;
         $dashboard['number_account_done'] = Account::where('client_status', 2)->count() + 300;
         $dashboard['number_account_selling'] = Account::where('client_status', 0)->count();
-        
+
         return view('home', compact('games', 'accounts', 'dashboard'));
     }
 }
