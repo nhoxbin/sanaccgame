@@ -109,8 +109,7 @@ class DataTablesController extends Controller
             } elseif ($rt_dt[$i]['payment_method'] === 'momo') {
                 $rt_dt[$i]['momo']['phone'] = $recharge_bills[$i]['momo']['phone'];
                 $rt_dt[$i]['momo']['code'] = $recharge_bills[$i]['momo']['code'];
-            } elseif ($rt_dt[$i]['payment_method'] === 'nganluong') {
-                dd($recharge_bills[$i]);
+            } elseif ($rt_dt[$i]['payment_method'] === 'nganluong' && isset($recharge_bills[$i]['nganluong'])) {
                 $rt_dt[$i]['nganluong']['link'] = '<a href="'.route('recharge.order.check').'?order_id='.$recharge_bills[$i]['nganluong']['token'].'" target="_blank" class="btn btn-sm btn-primary">Kiểm tra hóa đơn</a>';
             }
             $rt_dt[$i]['actions'] = $recharge_bills[$i]['confirm'] === 0 ?
