@@ -12,8 +12,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="sa-ttactit clearfix">
-                            <h1 class="sa-ttacc-tit">
-                               ACC {{ $account->game->name }} #{{ $account->id }}</h1>
+                            <h1 class="sa-ttacc-tit">ACC {{ $account->game->name }} #{{ $account->id }}</h1>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -21,16 +20,45 @@
                     </div>
                 </div>
                 <br />
-				<b>
-					@php
-		                $account_info = array_combine(explode('|', $account->game->info), explode('|', $account->info));
-		            @endphp
-		            @foreach($account_info as $key => $info)
-		                <li>{{ $key . ': ' . $info}}</li>
-		            @endforeach
-		            <li>Thông tin mô tả tài khoản: {{ $account->description }}</li>
-				</b>
-				<br />
+				<div class="row">
+                    <div class="col-sm-4">
+						<b>
+							@php
+								$account_info = array_combine(explode('|', $account->game->info), explode('|', $account->info));
+							@endphp
+							@foreach($account_info as $key => $info)
+								<li>{{ $key . ': ' . $info}}</li>
+							@endforeach
+							<li>Thông tin mô tả tài khoản: {{ $account->description }}</li>
+						</b>
+                    </div>
+                    <div class="col-sm-8">
+						<div class="left-content">
+							<div class="agency-info">
+								<div class="top-info">
+									<div class="inner-left-info">
+										<div class="basic-info">
+											<div class="right">
+												<div class="right-head">
+													<p class="fullname">{{ $account->user->name }}</p>
+												</div>
+											</div>
+										</div>
+										<div class="basic-info-bottom">
+											<p class="icon-verify">Chỉ giao dịch qua SanAccGame.Com ! Nếu bạn giao dịch bên ngoài SanAccGame.Com chúng tôi sẽ không giải quyết các vấn đề !<a href="javascript:void(0)" style="display:none">Tìm hiểu tại sao?</a></p>
+										</div>
+									</div>
+									<div class="inner-right-info">
+										<a href="javascript:void(0)" class="btn btn-phone btn-show-phone" onclick="showPhone(event, '{{ $account->contact_phone }}')">{{ substr($account->contact_phone, 0, -4) }}xxxx</a>
+										@if ($account->contact_link)
+											<button class="btn btn-chat" onclick="contact('{{ $account->contact_link }}')">Liên hệ với người bán</button>
+										@endif
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
                 <ul class="sa-ttacc-tabs clearfix">
 					<li class="active"><a href="#">Hình ảnh mô tả tài khoản</a></li>
                 </ul>
@@ -52,8 +80,20 @@
     </div>
 </div>
 @endsection
+@push('style')
+	<link rel="stylesheet" href="/web/client/css/contact.css">
+	<link rel="stylesheet" href="/web/client/css/contact.css.map">
+@endpush
 @push('script')
 	<script type="text/javascript">
+		function showPhone(e, phone) {
+			$(e.target).text(phone)
+		}
+
+		function contact(link) {
+			window.open(link, '_blank').focus();
+		}
+
 		function buy_now(account_id) {
 			swal({
 				title: "Tài Khoản Số #"+account_id,

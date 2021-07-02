@@ -12,7 +12,7 @@
                                 <div class="sl-row clearfix">
                                     <div class="col-md-12">
                                         <h4 class="sl-htit sl-ht3">CHỌN GAME</h4>
-                                        <div class="swiper-container slchgame">
+                                        {{-- <div class="swiper-container slchgame">
                                             <ul class="swiper-wrapper">
                                                 @foreach($games as $game)
                                                     <li class="swiper-slide">
@@ -26,6 +26,18 @@
                                                 @endforeach
                                             </ul>
                                             <div class="swiper-scrollbar"></div>
+                                        </div> --}}
+                                        <div class="row">
+                                            @foreach($games as $game)
+                                                <div class="col-xs-12 col-sm-6 col-md-3 mt-5">
+                                                    <a href="{{ route('game.account.index', $game->id) }}">
+                                                        <span class="center">
+                                                            <img src="{{ asset($game->picture) }}" alt="{{ $game->name }}">
+                                                        </span>
+                                                        <h3 class="text-center mt-2" style="font-size: 15px; color: #dadada;">{{ $game->name }}</h3>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +136,7 @@
                                                     case 0:
                                                         $acc .= ' (Đang bán)';
                                                         break;
-                                                    
+
                                                     case 1:
                                                         $acc .= ' (Đã bán, chờ người mua xác nhận)';
                                                         break;
@@ -134,7 +146,7 @@
                                                         break;
                                                 }
                                             @endphp
-                                            <span>ACC {{ $acc }}</span> 
+                                            <span>ACC {{ $acc }}</span>
                                         </div>
                                     </a>
                                     <div class="sl-prifs">
@@ -155,7 +167,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
                 {!! $accounts->links() !!}
@@ -164,9 +176,9 @@
             <div id="loading" style="margin: 30px 0; text-align: center; display: none;">
                 <img src="{{ asset('web/client/images/loading.gif') }}">
             </div>
-        </div>  
+        </div>
     </div>
-    
+
     @include('layouts.footer')
 </div>
 @endsection
@@ -175,7 +187,7 @@
         .swiper-container {
             width: 600px;
             height: 300px;
-        } 
+        }
     </style>
 @endpush
 @push('script')
