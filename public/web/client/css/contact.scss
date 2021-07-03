@@ -184,6 +184,7 @@
             display: flex;
             align-items: flex-start;
             margin: 0 0 27px;
+            justify-content: center;
 
             .avatar {
                 width: 70px;
@@ -223,7 +224,7 @@
                         margin: 0 0 0 5px;
                         width: 14px;
                         height: 14px;
-                        background: transparent url('/web/client/images/icon_checked.svg') no-repeat center/12px auto;
+                        // background: transparent url('/web/client/images/icon_checked.svg') no-repeat center/12px auto;
                     }
                 }
 

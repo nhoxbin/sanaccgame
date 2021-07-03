@@ -12,24 +12,9 @@
                                 <div class="sl-row clearfix">
                                     <div class="col-md-12">
                                         <h4 class="sl-htit sl-ht3">CHỌN GAME</h4>
-                                        {{-- <div class="swiper-container slchgame">
-                                            <ul class="swiper-wrapper">
-                                                @foreach($games as $game)
-                                                    <li class="swiper-slide">
-                                                        <a href="{{ route('game.account.index', $game->id) }}">
-                                                            <span class="center">
-                                                                <img src="{{ asset($game->picture) }}" alt="{{ $game->name }}">
-                                                            </span>
-                                                            <h3>{{ $game->name }}</h3>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                            <div class="swiper-scrollbar"></div>
-                                        </div> --}}
                                         <div class="row">
                                             @foreach($games as $game)
-                                                <div class="col-xs-12 col-sm-6 col-md-3 mt-5">
+                                                <div class="col-6 col-sm-6 col-md-3 mt-5">
                                                     <a href="{{ route('game.account.index', $game->id) }}">
                                                         <span class="center">
                                                             <img src="{{ asset($game->picture) }}" alt="{{ $game->name }}">
