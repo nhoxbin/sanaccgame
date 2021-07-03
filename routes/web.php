@@ -89,6 +89,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('buy', 'BuyBillController@store')->name('buy.store');
 
     // tài khoản
+    Route::get('game/{game}/account', 'AccountController@index')->name('game.account.index');
     Route::resource('account', 'AccountController', [
         'names' => 'account',
         'only' => ['create', 'store', 'update']
@@ -105,7 +106,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('change-password', 'ChangePassController@changePassword')->name('password.change');
 });
 
-Route::get('game/{game}/account', 'AccountController@index')->name('game.account.index');
 Route::get('/account/{account}', 'AccountController@show')->name('account.show');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
