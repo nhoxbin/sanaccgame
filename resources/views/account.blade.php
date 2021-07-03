@@ -32,27 +32,31 @@
 							<li>Thông tin mô tả tài khoản: {{ $account->description }}</li>
 						</b>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 mb-3">
 						<div class="left-content">
-							<div class="agency-info">
-								<div class="top-info">
-									<div class="inner-left-info">
-										<div class="basic-info">
-											<div class="right">
-												<div class="right-head">
-													<p class="fullname">{{ $account->user->name }}</p>
+							<div class="agency-info pb-3">
+								<div class="top-info row">
+									<div class="col-12">
+										<div class="inner-left-info">
+											<div class="basic-info">
+												<div class="right">
+													<div class="right-head">
+														<p class="fullname">{{ $account->user->name }}</p>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="basic-info-bottom">
-											<p class="icon-verify">Chỉ giao dịch qua SanAccGame.Com ! Nếu bạn giao dịch bên ngoài SanAccGame.Com chúng tôi sẽ không giải quyết các vấn đề !<a href="javascript:void(0)" style="display:none">Tìm hiểu tại sao?</a></p>
+											<div class="basic-info-bottom">
+												<p class="icon-verify">Chỉ giao dịch qua SanAccGame.Com ! Nếu bạn giao dịch bên ngoài SanAccGame.Com chúng tôi sẽ không giải quyết các vấn đề !<a href="javascript:void(0)" style="display:none">Tìm hiểu tại sao?</a></p>
+											</div>
 										</div>
 									</div>
-									<div class="inner-right-info">
-										<a href="javascript:void(0)" class="btn btn-phone btn-show-phone" onclick="showPhone(event, '{{ $account->contact_phone }}')">{{ substr($account->contact_phone, 0, -4) }}xxxx</a>
-										@if ($account->contact_link)
-											<button class="btn btn-chat" onclick="contact('{{ $account->contact_link }}')">Liên hệ với người bán</button>
-										@endif
+									<div class="col-12">
+										<div class="inner-right-info">
+											<a href="javascript:void(0)" class="btn btn-phone btn-show-phone" onclick="showPhone(event, '{{ $account->contact_phone }}')">{{ substr($account->contact_phone, 0, -4) }}xxxx</a>
+											@if ($account->contact_link)
+												<button class="btn btn-chat" onclick="contact('{{ $account->contact_link }}')">Liên hệ với người bán</button>
+											@endif
+										</div>
 									</div>
 								</div>
 							</div>
@@ -88,6 +92,7 @@
 	<script type="text/javascript">
 		function showPhone(e, phone) {
 			$(e.target).text(phone)
+			$(e.target).addClass('show')
 		}
 
 		function contact(link) {

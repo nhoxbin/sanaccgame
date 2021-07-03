@@ -96,8 +96,8 @@
             padding: 30px 30px 0;
 
             .inner-left-info {
-                flex-grow: 1;
-                width: calc(100% - 300px);
+                // flex-grow: 1;
+                // width: calc(100% - 300px);
             }
 
             .inner-right-info {
@@ -272,7 +272,7 @@
                 &::before {
                     content: '';
                     display: block;
-                    width: 33px;
+                    width: 4rem;
                     height: 22px;
                     margin: 0 8px 0 0;
                 }
@@ -972,7 +972,7 @@
         .agency-info {
             .top-info {
                 .inner-right-info {
-                    width: 200px;
+                    width: auto;
 
                     .btn-phone::after {
                         display: none;
